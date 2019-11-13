@@ -24,13 +24,13 @@ public:
 	    int value;
 	    Node *left, *right;
 	    
-	    int getData() {
+	    int getData() const {
 	    	return value;
 	    }
-	    Node * getLeftChild() {
+	    Node* getLeftChild() const {
 	    	return left;
 	    }
-	    Node * getRightChild() {
+	    Node* getRightChild() const {
 	    	return right;
 	    }
 	};
@@ -69,4 +69,6 @@ public:
 	bool insert(Node *&tree, int val);
 	
 	bool take_away(Node *&tree, int data);
+	
+	void clear_up(Node *&tree);
 };

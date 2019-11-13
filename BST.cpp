@@ -45,12 +45,19 @@ bool BST::remove(int data){
 * Removes all nodes from the tree, resulting in an empty tree.
 */
 void BST::clear(){
-    return;
+    clear_up(root);//////////////////////********&^%*&$)$////////////////////////seg fault
+    //////owh fqwhe lkajhgk qhg
+    ///////qwkjgh qwl;hg l;qwhg 
+    /////////qwlehg qwjhg q;whrgo;q hg
+    /////////qwgklh qlwhkg q
+    //////////qwlkg qlwkgh ql;wgj 
+    ///////////qwkgj qlwkgj ;qlwkjg lq
+    ////////////////////////qwlkrg hql;gjk ql;jg 
 }
 
 bool BST::insert(Node*& tree, int val){
     if(tree == NULL){
-        tree = new Node(val);///////////////////it doesn't like this line
+        tree = new Node(val);
         return true; //we successfully added it
     }
     if(tree->value == val)
@@ -64,11 +71,39 @@ bool BST::insert(Node*& tree, int val){
 bool BST::take_away(Node *&tree, int data){
     if(tree == NULL)
         return false; //couldn't find it
-    if(tree->value == data)
-        tree == NULL; //"deleted" it
+    if(tree->value == data){
+        if(tree->left == NULL){
+            Node *tempNode = tree;
+            tree = tree->right;
+            delete tempNode;
+            return true;
+        } else if(tree->right == NULL){
+            Node *tempNode = tree;
+            tree = tree->left;
+            delete tempNode;
+            return true;
+        }else{
+            Node *inorderPredecessor = tree->left;
+            while(inorderPredecessor->right != NULL)
+                inorderPredecessor = inorderPredecessor->right;
+            Node *tempNode = tree;
+            tree = inorderPredecessor;
+            delete tempNode;
+            delete inorderPredecessor;
+            return true;
+        }
+    }
     if(data < tree->value)
         return take_away(tree->left, data);
     else
         return take_away(tree->right, data);
     
+}
+
+void BST::clear_up(Node *&tree){ ///////////it's this guy we gotta work on next
+    if((tree->left == NULL) && (tree->right == NULL))
+        tree = NULL;
+    clear_up(tree->left);
+    clear_up(tree->right);
+    clear_up(tree);
 }
