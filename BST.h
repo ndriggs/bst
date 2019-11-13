@@ -24,9 +24,15 @@ public:
 	    int value;
 	    Node *left, *right;
 	    
-	    int getData() {return value;}
-	    Node * getLeftChild() {return left;}
-	    Node * getRightChild() {return right;}
+	    int getData() {
+	    	return value;
+	    }
+	    Node * getLeftChild() {
+	    	return left;
+	    }
+	    Node * getRightChild() {
+	    	return right;
+	    }
 	};
     Node *root;
 	//Please note that the class that implements this interface must be made
@@ -60,5 +66,7 @@ public:
 	*/
 	void clear();
 	
-	Node * find(Node *T);
+	bool insert(Node *&tree, int val);
+	
+	bool take_away(Node *&tree, int data);
 };

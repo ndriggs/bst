@@ -28,7 +28,7 @@ BST::Node * BST::getRootNode() const {
 * @return false if unsuccessful (i.e. the int is already in tree)
 */
 bool BST::add(int data){
-    return true;
+    return insert(root, data);
 }
 
 /*
@@ -38,7 +38,7 @@ bool BST::add(int data){
 * @return false if remove is unsuccessful(i.e. the int is not in the tree)
 */
 bool BST::remove(int data){
-    return true;
+    return take_away(root, data);
 }
 
 /*
@@ -48,6 +48,27 @@ void BST::clear(){
     return;
 }
 
-BST::Node * BST::find(Node *T){
-    return T;
+bool BST::insert(Node*& tree, int val){
+    if(tree == NULL){
+        tree = new Node(val);///////////////////it doesn't like this line
+        return true; //we successfully added it
+    }
+    if(tree->value == val)
+        return false; //can't add it, it's already there
+    if(val < tree->value)
+        return insert(tree->left, val);
+    else
+        return insert(tree->right, val);
+}
+
+bool BST::take_away(Node *&tree, int data){
+    if(tree == NULL)
+        return false; //couldn't find it
+    if(tree->value == data)
+        tree == NULL; //"deleted" it
+    if(data < tree->value)
+        return take_away(tree->left, data);
+    else
+        return take_away(tree->right, data);
+    
 }
