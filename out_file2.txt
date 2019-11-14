@@ -65,3 +65,6 @@ PrintBST
 Remove 1 True
 PrintBST
 BST is empty
+Clear
+PrintBST
+BST is empty

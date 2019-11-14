@@ -45,14 +45,8 @@ bool BST::remove(int data){
 * Removes all nodes from the tree, resulting in an empty tree.
 */
 void BST::clear(){
-    clear_up(root);//////////////////////********&^%*&$)$////////////////////////seg fault
-    //////owh fqwhe lkajhgk qhg
-    ///////qwkjgh qwl;hg l;qwhg 
-    /////////qwlehg qwjhg q;whrgo;q hg
-    /////////qwgklh qlwhkg q
-    //////////qwlkg qlwkgh ql;wgj 
-    ///////////qwkgj qlwkgj ;qlwkjg lq
-    ////////////////////////qwlkrg hql;gjk ql;jg 
+    clear_up(root);
+    root  = NULL;
 }
 
 bool BST::insert(Node*& tree, int val){
@@ -100,10 +94,11 @@ bool BST::take_away(Node *&tree, int data){
     
 }
 
-void BST::clear_up(Node *&tree){ ///////////it's this guy we gotta work on next
-    if((tree->left == NULL) && (tree->right == NULL))
-        tree = NULL;
+void BST::clear_up(Node *&tree){ 
+    if(tree == NULL){
+        return;
+    }
     clear_up(tree->left);
     clear_up(tree->right);
-    clear_up(tree);
+    delete tree;
 }
