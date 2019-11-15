@@ -6,7 +6,9 @@ using namespace std;
 BST::BST(){
     root = NULL;
 }
-BST::~BST(){}
+BST::~BST(){
+    clear();
+}
 
 
 //Please note that the class that implements this interface must be made
@@ -80,10 +82,9 @@ bool BST::take_away(Node *&tree, int data){
             Node *inorderPredecessor = tree->left;
             while(inorderPredecessor->right != NULL)
                 inorderPredecessor = inorderPredecessor->right;
-            Node *tempNode = tree;
-            tree = inorderPredecessor;
-            delete tempNode;
-            delete inorderPredecessor;
+            int newKing = inorderPredecessor->value;
+            tree->value = newKing;
+            take_away(tree->left, newKing);
             return true;
         }
     }
